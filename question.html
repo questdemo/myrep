@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .wrapper {
+            width: 60vw;
+            height: 40vh;
+            background-color: black;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 120px;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+        }
+        #qnum {
+            color: white;
+            flex-basis: 100%;
+            text-align: center;
+        }
+        #qcontent {
+            flex-basis: 100%;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+        }
+        .wrapper button {
+            flex-basis: 40%;
+            height: 40px;
+            border: 1px solid transparent;
+            text-align: center;
+            margin: 40px;
+            cursor: pointer;
+            background: chartreuse;
+            font-size: 24px;
+            transition: .4s;
+        }
+        .wrapper button:hover {
+            box-shadow: 0 0 8px yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h2 id="qnum">Question : 1</h2>
+        <p id="qcontent">Are you a member of Evan's group ?</p>
+        <button id="btn-yes" onclick="next_question()">Yes</button>
+        <button id="btn-no"  onclick="next_question()">No</button>
+    </div>
+
+    <script>
+        var q = document.getElementById('qcontent');
+        var qn = document.getElementById('qnum');
+        var a = 1;
+        function next_question() {
+                var id = setInterval(function () {
+                a -= 0.02;
+                q.style["color"] = "rgba(255, 255, 255, " + a + ")";
+                if (a  < 0) {
+                    clearInterval(id);
+                    q.textContent = "Are you younger than 18 years old ?";
+                    qn.textContent = "Question : 2";
+                    q.style["color"] = "white";
+                    a = 1;
+                }
+
+                }, 10);
+        }
+
+    </script>
+</body>
+</html>
